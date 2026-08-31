@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: hsl(240 10% 3.9%);
+  --color-foreground: hsl(0 0% 98%);
+  --color-surface: hsl(240 10% 5.9%);
+  --color-surface-elevated: hsl(240 10% 8.5%);
+  --color-surface-overlay: hsl(240 10% 12%);
+  --color-border: hsl(240 3.7% 15.9%);
+  --color-border-subtle: hsl(240 3.7% 21.8%);
+  --color-muted: hsl(240 5% 64.9%);
+  --color-muted-foreground: hsl(240 5% 64.9%);
+  --color-primary: hsl(260 84% 60%);
+  --color-primary-foreground: hsl(0 0% 100%);
+  --color-secondary: hsl(240 3.7% 15.9%);
+  --color-secondary-foreground: hsl(0 0% 98%);
+  --color-accent: hsl(260 84% 60% / 0.15);
+  --color-accent-foreground: hsl(260 84% 80%);
+  --color-success: hsl(142 71% 45%);
+  --color-success-foreground: hsl(0 0% 98%);
+  --color-warning: hsl(38 92% 50%);
+  --color-warning-foreground: hsl(48 96% 98%);
+  --color-error: hsl(346 77% 50%);
+  --color-error-foreground: hsl(0 0% 98%);
+  --color-info: hsl(217 91% 60%);
+  --color-info-foreground: hsl(0 0% 98%);
+  --color-ai: hsl(168 77% 42%);
+  --color-ai-foreground: hsl(0 0% 98%);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  ::selection {
+    @apply bg-primary/30 text-foreground;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(240 3.7% 25%) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(240 3.7% 25%);
+    border-radius: 9999px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: hsl(240 3.7% 35%);
+  }
+
+  .glass {
+    @apply bg-surface/80 backdrop-blur-xl border border-border-subtle;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent-foreground to-primary;
+  }
+}
