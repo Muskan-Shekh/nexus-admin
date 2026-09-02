@@ -3,12 +3,17 @@ from typing import List, Optional
 
 
 class Settings(BaseSettings):
-    DATABASE_URL: str = "postgresql://postgres:12345678@localhost:5432/nexus"
     DB_HOST: str = "localhost"
     DB_PORT: str = "5432"
     DB_NAME: str = "nexus"
     DB_USER: str = "postgres"
     DB_PASSWORD: str = "12345678"
+    DATABASE_URL: Optional[str] = None
+    DATABASE_HOST: Optional[str] = None
+    DATABASE_PORT: Optional[str] = None
+    DATABASE_NAME: Optional[str] = None
+    DATABASE_USER: Optional[str] = None
+    DATABASE_PASSWORD: Optional[str] = None
     REDIS_URL: str = "redis://localhost:6379/0"
     SECRET_KEY: str = "change-me-in-production"
     ALGORITHM: str = "HS256"

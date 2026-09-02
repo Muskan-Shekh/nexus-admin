@@ -3,7 +3,12 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from app.core.config import settings
 
-engine = create_engine(settings.DATABASE_URL)
+if settings.DATABASE_URL:
+    db_url = settings.DATABASE_URL
+else:
+    db_url = f"postgresql://{settings.DATABASE_USER or settings.DB_USER}:{settings.DATABASE_PASSWORD or settings.DB_PASSWORD}@{settings.DATABASE_HOST or settings.DB_HOST}:{settings.DATABASE_PORT or settings.DB_PORT}/{settings.DATABASE_NAME or settings.DB_NAME}"
+
+engine = create_engine(db_url)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
